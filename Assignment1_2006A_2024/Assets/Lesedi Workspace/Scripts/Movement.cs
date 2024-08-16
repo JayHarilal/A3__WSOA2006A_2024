@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,6 +19,13 @@ public class PlayerMovement : MonoBehaviour
     private float lastTapTimeA = -Mathf.Infinity;
     private float lastTapTimeD = -Mathf.Infinity;
 
+
+    private PlayerInputManager playerInputManager;
+    private Vector2 moveInput;
+    private Vector2 lookInput;
+    private bool jumpInput;
+    private bool dashInput;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -33,22 +41,25 @@ public class PlayerMovement : MonoBehaviour
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
+            transform.Rotate(Vector3.up * mouseX);
+
             // Handle vertical camera rotation
             verticalRotation -= mouseY;
             verticalRotation = Mathf.Clamp(verticalRotation, -verticalLookLimit, verticalLookLimit);
             playerCamera.localRotation = Quaternion.Euler(verticalRotation, 0f, 0f);
-            transform.Rotate(Vector3.up * mouseX);
+            // transform.Rotate(Vector3.up * mouseX);
 
             // Handle dash input
             HandleDashInput();
 
             // Jump (if implemented)
-            if (Input.GetButtonDown("Jump") && IsGrounded())
+             if (Input.GetButtonDown("Jump") && IsGrounded())
             {
                 rb.AddForce(Vector3.up * speed, ForceMode.Impulse);
             }
         }
     }
+
 
     void FixedUpdate()
     {
@@ -56,6 +67,14 @@ public class PlayerMovement : MonoBehaviour
         {
             // Move instantly during dash
             rb.velocity = dashDirection * dashSpeed;
+            // Ensure the dash does not affect camera rotation
+            Vector3 cameraRotation = playerCamera.localRotation.eulerAngles;
+            playerCamera.localRotation = Quaternion.Euler(cameraRotation.x, cameraRotation.y, 0f);
+
+            Debug.Log("Player Rotation: " + transform.eulerAngles);
+            Debug.Log("Camera Rotation: " + playerCamera.localRotation.eulerAngles);
+
+
             isDashing = false; // End the dash immediately after applying the force
         }
         else
@@ -81,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (Time.time - lastTapTimeA <= doubleTapTime)
                 {
-                    StartDash(Vector3.left);
+                    StartDash(-transform.right); //StartDash(Vector3.left);Will dash to the left based on players direction
                 }
                 lastTapTimeA = Time.time;
             }
@@ -90,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 if (Time.time - lastTapTimeD <= doubleTapTime)
                 {
-                    StartDash(Vector3.right);
+                    StartDash(transform.right); //StartDash(Vector3.right);Will dash to the right based on players direction
                 }
                 lastTapTimeD = Time.time;
             }
@@ -102,8 +121,10 @@ public class PlayerMovement : MonoBehaviour
         if (!isDashing)
         {
             isDashing = true;
-            dashDirection = direction;
+            dashDirection = direction.normalized;//Set the direction of the dash based on players direction
             lastDashTime = Time.time;
+            // Lock the camera rotation
+            playerCamera.localRotation = Quaternion.Euler(verticalRotation, transform.eulerAngles.y, 0f);
         }
     }
 

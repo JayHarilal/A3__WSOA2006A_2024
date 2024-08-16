@@ -67,7 +67,7 @@ public class PlayerShooting : MonoBehaviour
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
         if (projectileRb != null)
         {
-            projectileRb.velocity = rotation * Vector3.forward * projectileSpeed;
+            projectileRb.velocity = projectileRb.velocity = rotation * Vector3.forward * projectileSpeed; //shootingPoint.forward * projectileSpeed; projectileRb.velocity = rotation * Vector3.forward * projectileSpeed;
         }
         else
         {
