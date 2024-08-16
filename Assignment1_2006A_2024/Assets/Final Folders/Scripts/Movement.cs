@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private float verticalRotation = 0f;
     private Rigidbody rb;
     public Transform playerCamera; 
+
     private bool isDashing = false;
     private Vector3 dashDirection;
     private float lastDashTime = -Mathf.Infinity;
@@ -20,11 +21,11 @@ public class PlayerMovement : MonoBehaviour
     private float lastTapTimeD = -Mathf.Infinity;
 
 
-    private PlayerInputManager playerInputManager;
-    private Vector2 moveInput;
-    private Vector2 lookInput;
-    private bool jumpInput;
-    private bool dashInput;
+    //private PlayerInputManager playerInputManager;
+    //private Vector2 moveInput;
+    //private Vector2 lookInput;
+    //private bool jumpInput;
+    //private bool dashInput;
 
     void Start()
     {
@@ -65,9 +66,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDashing)
         {
-            // Move instantly during dash
+            //Move instantly during dash
             rb.velocity = dashDirection * dashSpeed;
-            // Ensure the dash does not affect camera rotation
+            //Ensure the dash does not affect camera rotation
             Vector3 cameraRotation = playerCamera.localRotation.eulerAngles;
             playerCamera.localRotation = Quaternion.Euler(cameraRotation.x, cameraRotation.y, 0f);
 
@@ -118,15 +119,15 @@ public class PlayerMovement : MonoBehaviour
 
     void StartDash(Vector3 direction)
     {
-        if (!isDashing)
-        {
-            isDashing = true;
-            dashDirection = direction.normalized;//Set the direction of the dash based on players direction
-            lastDashTime = Time.time;
-            // Lock the camera rotation
-            playerCamera.localRotation = Quaternion.Euler(verticalRotation, transform.eulerAngles.y, 0f);
-        }
+       if (!isDashing)
+    {
+        isDashing = true;
+        dashDirection = direction.normalized;//Set the direction of the dash based on players direction
+        lastDashTime = Time.time;
+    //Lock the camera rotation
+    playerCamera.localRotation = Quaternion.Euler(verticalRotation, transform.eulerAngles.y, 0f);
     }
+}
 
     bool IsGrounded()
     {
