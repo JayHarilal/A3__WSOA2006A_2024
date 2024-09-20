@@ -1,5 +1,5 @@
-# A1_WSOA2006A_2024
-Assignment 1 - WSOA2006A
+# A2_WSOA2006A_2024
+Assignment 2 - WSOA2006A
 
 Project Overview:
 This repository contains the source code and project files for our 3D first-person prototype assignment made in Unity. This is for the course WSOA2006A, where we were tasked with making a protoype using no assets.
