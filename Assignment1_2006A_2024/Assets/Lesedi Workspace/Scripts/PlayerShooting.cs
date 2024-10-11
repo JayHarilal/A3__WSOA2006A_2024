@@ -13,6 +13,10 @@ public class PlayerShooting : MonoBehaviour
     public float projectileSpeed = 20f; // Speed at which the projectile will travel
     public int spreadShotCount = 5; // Number of projectiles in spreadshot
     public float spreadAngle = 30f; // Angle of spread for the spreadshot
+    public float projectileLifetime = 3f; // Lifetime of the projectile
+
+    // Public reference to the muzzle flash particle system
+    public ParticleSystem muzzleFlash;
 
     private ShootingMode currentMode = ShootingMode.Single;
 
@@ -44,6 +48,16 @@ public class PlayerShooting : MonoBehaviour
             return;
         }
 
+        // Trigger muzzle flash
+        if (muzzleFlash != null)
+        {
+            muzzleFlash.Play();
+        }
+        else
+        {
+            Debug.LogWarning("Muzzle flash particle system is not assigned!");
+        }
+
         if (currentMode == ShootingMode.Single)
         {
             // Single shot
@@ -67,7 +81,11 @@ public class PlayerShooting : MonoBehaviour
         Rigidbody projectileRb = projectile.GetComponent<Rigidbody>();
         if (projectileRb != null)
         {
-            projectileRb.velocity = projectileRb.velocity = rotation * Vector3.forward * projectileSpeed; //shootingPoint.forward * projectileSpeed; projectileRb.velocity = rotation * Vector3.forward * projectileSpeed;
+            // Set the projectile's velocity
+            projectileRb.velocity = rotation * Vector3.forward * projectileSpeed;
+
+            // Set a lifetime for the projectile
+            Destroy(projectile, projectileLifetime);
         }
         else
         {

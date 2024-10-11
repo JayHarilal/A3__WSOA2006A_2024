@@ -8981,6 +8981,8 @@ MonoBehaviour:
   projectileSpeed: 20
   spreadShotCount: 5
   spreadAngle: 363.3
+  projectileLifetime: 3
+  muzzleFlash: {fileID: 602340677}
 --- !u!4 &1852929809 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 921636496246179112, guid: 33adb31a7d628f44c8e2e9ac6939d277, type: 3}
