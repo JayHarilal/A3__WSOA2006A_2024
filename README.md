@@ -1,5 +1,5 @@
-# A2_WSOA2006A_2024
-Assignment 2 - WSOA2006A
+# A3_WSOA2006A_2024
+Assignment 3 - WSOA2006A
 
 Project Overview:
 This repository contains the source code and project files for our 3D first-person prototype assignment made in Unity. This is for the course WSOA2006A, where we were tasked with making a protoype using no assets.
@@ -33,6 +33,7 @@ Spacebar - Jump
 Shift: Dash(Double tap A or D for directional dash)
 Mouse wheel: Change firing mode
 Left click: Shoot
+Interact: E
 
 Build:
 The windows build is available in the zipped folder attached in the project submissions.
