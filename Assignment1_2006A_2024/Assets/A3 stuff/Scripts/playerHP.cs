@@ -11,13 +11,23 @@ public class playerHP : MonoBehaviour
     private float lerpTimer;
     public float maxHP = 100f;
     private float chipSpeed = 3f;
+
+    [Header("HPBar")]
     public Image frontHP;
     public Image backHP;
     public TextMeshProUGUI HPText;
 
+    [Header("DamageEffect")]
+    public Image overlay;
+    public float durationBlood;
+    public float fadeBlood;
+
+    private float durationTimer;
+
     void Start()
     {
         HP = maxHP;
+        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 0f);
     }
 
     // Update is called once per frame
@@ -25,6 +35,20 @@ public class playerHP : MonoBehaviour
     {
         HP = Mathf.Clamp(HP, 0, maxHP);
         UpdateHPUI();
+        if(overlay.color.a > 0)
+        {
+            if (HP<40)
+            {
+                return;
+            }
+            durationTimer += Time.deltaTime;
+            if(durationTimer > durationBlood)
+            {
+                float temporaryA = overlay.color.a;
+                temporaryA -= Time.deltaTime * fadeBlood;
+                overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, temporaryA);
+            }
+        }
     }
     public void UpdateHPUI()
     {
@@ -57,6 +81,8 @@ public class playerHP : MonoBehaviour
     {
         HP -= damage;
         lerpTimer = 0f;
+        durationBlood = 0f;
+        overlay.color = new Color(overlay.color.r, overlay.color.g, overlay.color.b, 1);
     }
 
     public void Heal(float heal)
