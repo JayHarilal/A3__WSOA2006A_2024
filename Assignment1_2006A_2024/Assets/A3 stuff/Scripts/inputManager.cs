@@ -21,16 +21,20 @@ public class inputManager : MonoBehaviour
         walking.Crouch.performed += ctx => properties.Crouch();
         walking.Sprint.performed += ctx => properties.Sprint();
     }
-
-    void FixedUpdate()
+    private void Update()
     {
         properties.movement(walking.Movement.ReadValue<Vector2>());
-    }
-
-    private void LateUpdate()
-    {
         look.lookAround(walking.lookAround.ReadValue<Vector2>());
     }
+    //void FixedUpdate()
+    //{
+    //    properties.movement(walking.Movement.ReadValue<Vector2>());
+    //}
+
+    //private void LateUpdate()
+    //{
+    //    look.lookAround(walking.lookAround.ReadValue<Vector2>());
+    //}
 
     private void OnEnable()
     {
