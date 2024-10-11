@@ -8,6 +8,10 @@ Group Members:
 Jayaveer Harilal
 Lesedi Shibambo
 
+New Changes:
+Gamepad can be used.
+Pause Menu added, pressing escape during game.
+
 Project description:
 Our prototype is a first-person 3D game featuring two core mehcanics and smooth movement.
 It has a smooth, responsive first-person controller.
