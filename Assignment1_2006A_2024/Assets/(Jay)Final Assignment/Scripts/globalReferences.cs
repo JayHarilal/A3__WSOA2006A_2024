@@ -9,6 +9,7 @@ public class globalReferences : MonoBehaviour
     public GameObject bulletImpactEffectPrefab;
 
     public GameObject grenadeExplosionEffect;
+    public GameObject flashGrenadeEffect;
 
     private void Awake()
     {
