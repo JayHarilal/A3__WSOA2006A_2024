@@ -11,28 +11,35 @@ public class Weapons : MonoBehaviour
     public bool isShooting, readyToShoot;
     bool allowReset = true;
     public float shootingDelay = 2f;
-    //3 round burst
+
+    [Header("Burst")]
     public int bulletPerBurst = 3;
     public int currentBurst;
-    //Spread
+
+    [Header("Spread")]
     public float spreadIntensity;
-    //Bullet
+    public float hipSpreadIntensity;
+    public float ADSSpreadIntensity;
+
+    [Header("Bullet")]
     public GameObject bulletPrefab;
     public Transform bulletSpawn;
     public float bulletVeloctiy = 30;
     public float bulletPrefabLifeTime = 3f;
 
-    //muzzle
+    [Header("Muzzle")]
     public GameObject muzzleEffect;
     internal Animator animator;
 
-    //reloading
+    [Header("Reloading")]
     public float reloadTime;
     public int magSize, bulletsLeft;
     public bool isReloading;
 
     public Vector3 spawnPosition;
     public Vector3 spawnRotation;
+
+    bool isAds;
 
     public enum weaponChoice
     {
@@ -58,6 +65,8 @@ public class Weapons : MonoBehaviour
         animator = GetComponent<Animator>();
 
         bulletsLeft = magSize;
+
+        spreadIntensity = hipSpreadIntensity;
     }
 
     // Update is called once per frame
@@ -66,6 +75,21 @@ public class Weapons : MonoBehaviour
 
         if (isActiveWeapon)
         {
+            if (Input.GetMouseButtonDown(1))
+            {
+                animator.SetTrigger("enterADS");
+                isAds = true;
+                HUDManager.Instance.middleDot.SetActive(false);
+                spreadIntensity = ADSSpreadIntensity;
+            }
+            if (Input.GetMouseButtonUp(1))
+            {
+                animator.SetTrigger("exitADS");
+                isAds = false;
+                HUDManager.Instance.middleDot.SetActive(true);
+                spreadIntensity = hipSpreadIntensity;
+            }
+
             GetComponent<Outline>().enabled = false;
             if (bulletsLeft == 0 && isShooting)
             {
@@ -101,7 +125,14 @@ public class Weapons : MonoBehaviour
         bulletsLeft--;
 
         muzzleEffect.GetComponent<ParticleSystem>().Play();
-        animator.SetTrigger("RECOIL");
+        if(isAds)
+        {
+            animator.SetTrigger("recoilADS");
+        }
+        else
+        {
+            animator.SetTrigger("RECOIL");
+        }
 
         //soundManager.Instance.shootingSound1911.Play();
         soundManager.Instance.playShootingSound(thisWeaponChoice);
@@ -179,10 +210,10 @@ public class Weapons : MonoBehaviour
 
         Vector3 direction = targetPoint - bulletSpawn.position;
 
-        float x = UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
+        float z = UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
         float y = UnityEngine.Random.Range(-spreadIntensity, spreadIntensity);
 
-        return direction + new Vector3(x, y, 0);
+        return direction + new Vector3(0, y, z);
     }
     private IEnumerator destroyBullet(GameObject bullet, float delay)
     {
