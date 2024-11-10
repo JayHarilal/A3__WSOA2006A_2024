@@ -82,7 +82,7 @@ public class Weapons : MonoBehaviour
                 isShooting = Input.GetKeyDown(KeyCode.Mouse0);
             }
 
-            if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magSize && isReloading == false)
+            if (Input.GetKeyDown(KeyCode.R) && bulletsLeft < magSize && isReloading == false && weaponManager.Instance.checkAmmoLeftFor(thisWeaponChoice)>0)
             {
                 reload();
             }
@@ -95,6 +95,7 @@ public class Weapons : MonoBehaviour
 
         }
     }
+
     private void FireWeapon()
     {
         bulletsLeft--;
@@ -142,7 +143,16 @@ public class Weapons : MonoBehaviour
 
     private void reloadCompleted()
     {
-        bulletsLeft = magSize;
+        if(weaponManager.Instance.checkAmmoLeftFor(thisWeaponChoice)>magSize)
+        {
+            bulletsLeft = magSize;
+            weaponManager.Instance.decreaseTotalAmmo(bulletsLeft, thisWeaponChoice);
+        }else
+        {
+            bulletsLeft = weaponManager.Instance.checkAmmoLeftFor(thisWeaponChoice);
+            weaponManager.Instance.decreaseTotalAmmo(bulletsLeft, thisWeaponChoice);
+        }
+
         isReloading = false;
     }
 
@@ -174,7 +184,6 @@ public class Weapons : MonoBehaviour
 
         return direction + new Vector3(x, y, 0);
     }
-
     private IEnumerator destroyBullet(GameObject bullet, float delay)
     {
         yield return new WaitForSeconds(delay);

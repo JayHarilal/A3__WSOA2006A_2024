@@ -11,6 +11,10 @@ public class weaponManager : MonoBehaviour
     public List<GameObject> weaponSlots;
 
     public GameObject activeWeaponSlot;
+
+    [Header("Ammo")]
+    public int totalRifleAmmo = 0;
+    public int totalPistolAmmo = 0;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -71,6 +75,20 @@ public class weaponManager : MonoBehaviour
         weapons.animator.enabled = true;
     }
 
+    internal void pickUpAmmo(ammoBox ammo)
+    {
+        switch (ammo.ammoType)
+        {
+            case ammoBox.AmmoType.pistolAmmo:
+                totalPistolAmmo += ammo.ammoAmount;
+                break;
+            case ammoBox.AmmoType.rifleAmmo:
+                totalRifleAmmo += ammo.ammoAmount;
+                break;
+        }
+    
+    }
+
     private void dropCurrentWeapon(GameObject pickedUpWeapon)
     {
         if (activeWeaponSlot.transform.childCount >0)
@@ -102,5 +120,32 @@ public class weaponManager : MonoBehaviour
             newWeapon.isActiveWeapon = true;
         }
 
+    }
+
+    internal void decreaseTotalAmmo(int bulletsToDecrease, Weapons.weaponChoice thisWeaponChoice)
+    {
+        switch (thisWeaponChoice)
+        {
+            case Weapons.weaponChoice.ARAK47:
+                totalRifleAmmo -= bulletsToDecrease;
+                break;
+            case Weapons.weaponChoice.Pistol1911:
+                totalPistolAmmo -= bulletsToDecrease;
+                break;
+        }
+    }
+
+    public int checkAmmoLeftFor(Weapons.weaponChoice thisWeaponChoice)
+    {
+        switch (thisWeaponChoice)
+        {
+            case Weapons.weaponChoice.ARAK47:
+                return Instance.totalRifleAmmo;
+            case Weapons.weaponChoice.Pistol1911:
+                return Instance.totalPistolAmmo;
+
+            default:
+                return 0;
+        }
     }
 }
