@@ -6,10 +6,10 @@ public class playerMovementProperties : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 playerVelocity;
-    private float speed = 12f;
+    public float speed = 12f;
     private bool isGrounded;
     private float gravity = -9.8f;
-    public float jumpHeight = 4f;
+    public float jumpHeight = 0.5f;
     bool crouching = false;
     float crouchTimer = 1;
     bool lerpCrouch = false;
