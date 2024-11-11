@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
 
     private void PlayerDead()
     {
+        soundManager.Instance.playerChannel.clip = soundManager.Instance.gameOverMusic;
+        soundManager.Instance.playerChannel.PlayDelayed(2f);
         playerHealthUI.gameObject.SetActive(false);
 
         GetComponent<screenBlackout>().StartFade();

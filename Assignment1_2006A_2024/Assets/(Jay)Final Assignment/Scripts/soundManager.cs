@@ -32,6 +32,7 @@ public class soundManager : MonoBehaviour
     public AudioSource playerChannel;
     public AudioClip playerHurt;
     public AudioClip playerDead;
+    public AudioClip gameOverMusic;
     private void Awake()
     {
         if (Instance != null && Instance != this)

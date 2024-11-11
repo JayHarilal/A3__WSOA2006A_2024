@@ -50,7 +50,7 @@ public class ZombiePatrollingState : StateMachineBehaviour
         timer += Time.deltaTime;
         if (timer > patrollingTime)
         {
-            animator.SetBool("isPatroling", false);
+            animator.SetBool("isPatrolling", false);
         }
 
         float distanceFromPlayer = Vector3.Distance(player.position, animator.transform.position);
