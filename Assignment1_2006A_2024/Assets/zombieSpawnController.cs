@@ -16,13 +16,14 @@ public class zombieSpawnController : MonoBehaviour
     public float waveCooldown = 10.0f;
 
     public bool inCooldown;
-    public float cooldownCounter = 10;
+    public float cooldownCounter = 0;
 
     public List<Enemy> currentZombiesAlive;
 
     public GameObject zombiePrefab;
     public TextMeshProUGUI waveOverUI;
     public TextMeshProUGUI cooldownCounterUI;
+    public TextMeshProUGUI currentWaveUI;
 
 
     private void Start()
@@ -36,7 +37,7 @@ public class zombieSpawnController : MonoBehaviour
         currentZombiesAlive.Clear();
 
         currentWave++;
-
+        currentWaveUI.text = "Wave: " + currentWave.ToString();
         StartCoroutine(spawnWave());
     }
 
@@ -77,7 +78,7 @@ public class zombieSpawnController : MonoBehaviour
 
         if (inCooldown)
         {
-            cooldownCounter = Time.deltaTime;
+            cooldownCounter -= Time.deltaTime;
         }
         else
         {
@@ -90,11 +91,13 @@ public class zombieSpawnController : MonoBehaviour
     {
         inCooldown = true;
         waveOverUI.gameObject.SetActive(true);
+        cooldownCounterUI.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(waveCooldown);
 
         inCooldown = false;
         waveOverUI.gameObject.SetActive(false);
+        cooldownCounterUI.gameObject.SetActive(true);
         currentZombiesPerWave *= 2;
         startNextWave();
     }
