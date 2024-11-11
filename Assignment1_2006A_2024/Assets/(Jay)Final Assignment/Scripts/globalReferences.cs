@@ -13,6 +13,8 @@ public class globalReferences : MonoBehaviour
 
     public GameObject bloodSprayEffect;
 
+    public int waveNumber;
+
     private void Awake()
     {
         if(Instance != null && Instance != this)

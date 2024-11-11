@@ -253,7 +253,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -354.89996, y: 215.4049}
+  m_AnchoredPosition: {x: -346, y: 211}
   m_SizeDelta: {x: 234.2, y: 53.1902}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &16320062
@@ -638,12 +638,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.403
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -2689,6 +2689,7 @@ MonoBehaviour:
   grenadeExplosionEffect: {fileID: 100006, guid: 4575df893a6e3f64a8283dee38413a34, type: 3}
   flashGrenadeEffect: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 3}
   bloodSprayEffect: {fileID: 6332978878712300973, guid: 4f1ca477573cede4ab42f0d0b7fc3bde, type: 3}
+  waveNumber: 0
 --- !u!4 &899168986
 Transform:
   m_ObjectHideFlags: 0

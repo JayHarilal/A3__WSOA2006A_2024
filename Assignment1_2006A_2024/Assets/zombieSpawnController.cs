@@ -29,6 +29,9 @@ public class zombieSpawnController : MonoBehaviour
     private void Start()
     {
         currentZombiesPerWave = initialZombiesPerWave;
+
+        globalReferences.Instance.waveNumber = currentWave;
+
         startNextWave();
     }
 
@@ -37,6 +40,9 @@ public class zombieSpawnController : MonoBehaviour
         currentZombiesAlive.Clear();
 
         currentWave++;
+
+        globalReferences.Instance.waveNumber = currentWave;
+
         currentWaveUI.text = "Wave: " + currentWave.ToString();
         StartCoroutine(spawnWave());
     }
