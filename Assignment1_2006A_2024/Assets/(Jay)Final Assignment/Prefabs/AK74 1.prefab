@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9176766221185780918}
   - component: {fileID: 5397478173629677691}
   - component: {fileID: 7677323026058380742}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: AK74 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 845657807567735802}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: 0, w: 0}
-  m_LocalPosition: {x: 1.1990013, y: -0.79782534, z: 2.9099996}
+  m_LocalPosition: {x: 0.15, y: 0.31, z: 0.81}
   m_LocalScale: {x: 2.25, y: 2.25, z: 2.25}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -104,12 +104,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActiveWeapon: 0
+  weaponDamage: 24
   isShooting: 0
   readyToShoot: 0
   shootingDelay: 0.15
   bulletPerBurst: 1
   currentBurst: 0
-  spreadIntensity: 0.1
+  spreadIntensity: 0
+  hipSpreadIntensity: 0.4
+  ADSSpreadIntensity: 0.05
   bulletPrefab: {fileID: 7466235290627080472, guid: 1fbf08b839d95d9448a744cddbf1d306, type: 3}
   bulletSpawn: {fileID: 3526074441345724458}
   bulletVeloctiy: 700
@@ -194,7 +197,7 @@ GameObject:
   - component: {fileID: 3391001790026127426}
   - component: {fileID: 7661555522769651887}
   - component: {fileID: 1501111270115140847}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: MuzzleFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4977,7 +4980,7 @@ GameObject:
   - component: {fileID: 5440598767414268483}
   - component: {fileID: 5273289525031692602}
   - component: {fileID: 405074587155784202}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Bolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5060,7 +5063,7 @@ GameObject:
   - component: {fileID: 6209384884659688072}
   - component: {fileID: 4252972650486752238}
   - component: {fileID: 1186870772477299320}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5143,7 +5146,7 @@ GameObject:
   - component: {fileID: 4587917533285146237}
   - component: {fileID: 1732121605724886913}
   - component: {fileID: 4233115504430510467}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Mag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5224,7 +5227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3526074441345724458}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}

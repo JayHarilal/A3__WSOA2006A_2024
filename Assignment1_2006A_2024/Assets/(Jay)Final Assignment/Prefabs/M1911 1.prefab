@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6925804740041073966}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: bulletSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 1583133754122279521}
   - component: {fileID: 5568832887325327787}
   - component: {fileID: 6411663259914527791}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Hammer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 7846834218982284810}
   - component: {fileID: 6137044412893750298}
   - component: {fileID: 686745839610310983}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Magazin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 3122402332512401915}
   - component: {fileID: 6299782363719332762}
   - component: {fileID: 2024286680626649882}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: M1911 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,12 +249,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActiveWeapon: 0
+  weaponDamage: 18
   isShooting: 0
   readyToShoot: 0
   shootingDelay: 0.5
   bulletPerBurst: 1
   currentBurst: 0
-  spreadIntensity: 0.1
+  spreadIntensity: 0
+  hipSpreadIntensity: 0.5
+  ADSSpreadIntensity: 0.1
   bulletPrefab: {fileID: 7466235290627080472, guid: 1fbf08b839d95d9448a744cddbf1d306, type: 3}
   bulletSpawn: {fileID: 6925804740041073966}
   bulletVeloctiy: 500
@@ -339,7 +342,7 @@ GameObject:
   - component: {fileID: 6662585644832183095}
   - component: {fileID: 4757384179237448896}
   - component: {fileID: 6991869116598727575}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: M1911
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -426,7 +429,7 @@ GameObject:
   - component: {fileID: 3564462348813723134}
   - component: {fileID: 6909395959600093571}
   - component: {fileID: 368609491586052393}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -509,7 +512,7 @@ GameObject:
   - component: {fileID: 6105419482670835372}
   - component: {fileID: 8308762391696350426}
   - component: {fileID: 2477773513837248068}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -590,7 +593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6835327171401474962}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: CINEMA_4D_Editor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -623,7 +626,7 @@ GameObject:
   - component: {fileID: 774573858644633278}
   - component: {fileID: 1237392756483350650}
   - component: {fileID: 408052765828616969}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: MuzzleFlashEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}

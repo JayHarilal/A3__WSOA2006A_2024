@@ -7,6 +7,7 @@ using TMPro;
 public class Weapons : MonoBehaviour
 {
     public bool isActiveWeapon;
+    public int weaponDamage;
 
     public bool isShooting, readyToShoot;
     bool allowReset = true;
@@ -75,6 +76,11 @@ public class Weapons : MonoBehaviour
 
         if (isActiveWeapon)
         {
+            //foreach(Transform child in transform)
+            //{
+            //   child.gameObject.layer = LayerMask.NameToLayer("WeaponRender");
+            //}
+
             if (Input.GetMouseButtonDown(1))
             {
                 animator.SetTrigger("enterADS");
@@ -116,6 +122,13 @@ public class Weapons : MonoBehaviour
                 currentBurst = bulletPerBurst;
                 FireWeapon();
             }
+            //else
+            //{
+            //    foreach (Transform child in transform)
+             //   {
+             //       child.gameObject.layer = LayerMask.NameToLayer("Default");
+               // }
+            //}
 
         }
     }
@@ -141,7 +154,11 @@ public class Weapons : MonoBehaviour
 
         Vector3 shootingDirection = calculateDirectionAndSpread().normalized;
 
+        //instantiate
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
+
+        bullet bul = bullet.GetComponent<bullet>();
+        bul.bulletDamage = weaponDamage;
 
         bullet.transform.forward = shootingDirection;
 
