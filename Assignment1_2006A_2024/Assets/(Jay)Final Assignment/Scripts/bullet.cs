@@ -24,7 +24,11 @@ public class bullet : MonoBehaviour
         }
         if (hitObject.gameObject.CompareTag("Enemy"))
         {
-            hitObject.gameObject.GetComponent<Enemy>().takeDamage(bulletDamage);
+
+            if (hitObject.gameObject.GetComponent<Enemy>().isDead == false)
+            {
+               hitObject.gameObject.GetComponent<Enemy>().takeDamage(bulletDamage);
+            }
 
             createBloodSprayEffect(hitObject);
 
