@@ -32,4 +32,8 @@ public class ZombieIdleState : StateMachineBehaviour
             animator.SetBool("isChasing", true);
         }
     }
+    public override void OnStateMachineExit(Animator animator, int stateMachinePathHash)
+    {
+        soundManager.Instance.zombieChannel.Stop();
+    }
 }
