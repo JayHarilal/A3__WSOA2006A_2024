@@ -1,8 +1,8 @@
 # A3_WSOA2006A_2024
-Assignment 3 - WSOA2006A
+Final Project - WSOA2006A
 
 Project Overview:
-This repository contains the source code and project files for our 3D first-person prototype assignment made in Unity. This is for the course WSOA2006A, where we were tasked with making a protoype using no assets.
+This repository contains the source code and project files for our 3D first-person prototype assignment made in Unity. This is for the course WSOA2006A, where we were tasked with making a protoype using no assets.This project is a round based survival zombie game, where the player can pick up different weapons, lethals and tacticals to try and survive as long as possible. The highest round is saved each time.
 
 Group Members:
 Jayaveer Harilal
@@ -34,8 +34,7 @@ Controls:
 W,A,S,D - Movement
 Mouse - Look around
 Spacebar - Jump
-Shift: Dash(Double tap A or D for directional dash)
-Mouse wheel: Change firing mode
+To choose weapon slot - 1 and 2 respectively (must pick empty one to pick up a weapon)
 Left click: Shoot
 Interact: E
 
